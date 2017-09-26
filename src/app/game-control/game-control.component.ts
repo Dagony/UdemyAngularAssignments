@@ -11,7 +11,6 @@ import {Component, EventEmitter, Output} from '@angular/core';
 export class GameControlComponent {
 
   public count: number = 0;
-
   @Output() public intervalEvent = new EventEmitter<number>();
 
   private _setIntervalHandler: any;
