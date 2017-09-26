@@ -25,10 +25,7 @@ import { EvenComponent } from './even/even.component';
 })
 export class AppModule  {
 
-  gameRunning = false;
-  counter = 0;
-
-  constructor() {
+   constructor() {
 
   }
 

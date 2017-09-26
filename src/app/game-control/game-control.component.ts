@@ -1,33 +1,32 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-gamecontrol',
-  templateUrl: './app-gamecontrol.component.html',
-  styleUrls: [
-    './app-gamecontrol.component.css'
-  ]
-
+  templateUrl: './game-control.component.html',
+  styleUrls: ['./game-control.component.css']
 })
-export class GameControlComponent {
+export class GameControlComponent implements OnInit {
+  @Output() intervalFired = new EventEmitter<number>();
+  interval;
+  lastNumber = 0;
 
-  public count: number = 0;
-  @Output() public intervalEvent = new EventEmitter<number>();
+  constructor() { }
 
-  private _setIntervalHandler: any;
+  ngOnInit() {
+  }
 
-  constructor() {
+  onStartGame() {
+    this.interval = setInterval(() => {
+      this.intervalFired.emit(this.lastNumber + 1);
+      this.lastNumber++;
+    },
+     1000);
 
   }
 
-  startGame() {
-    this._setIntervalHandler = setInterval( () => {
-      this.count++;
-      this.intervalEvent.emit(this.count);
-    }, 1000);
-  }
-
-  endGame() {
-    clearInterval(this._setIntervalHandler);
+  onEndGame() {
+    console.log('End game button is clicked');
+    clearInterval(this.interval);
   }
 
 }
