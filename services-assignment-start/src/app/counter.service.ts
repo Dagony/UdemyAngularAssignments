@@ -1,5 +1,17 @@
-export class CounterService {
+import {Injectable} from '@angular/core';
 
-  // Keep track of how many time users get switch from Active to Inactive and vice versa
-  // Output number when it increases
+@Injectable()
+export class CounterService {
+  inactiveToActiveCounter: number = 0;
+  activeToInactiveCounter: number = 0;
+
+  countInactiveToActive() {
+    this.inactiveToActiveCounter = this.inactiveToActiveCounter + 1;
+    console.log('Inactive to Active counter: ' + this.inactiveToActiveCounter);
+  }
+
+  countActiveToInactive() {
+    this.activeToInactiveCounter = this.activeToInactiveCounter + 1;
+    console.log('Active to Inactive counter: ' + this.activeToInactiveCounter);
+  }
 }
